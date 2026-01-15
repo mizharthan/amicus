@@ -1,0 +1,232 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+p,
+form {
+  margin: 0;
+}
+
+input,
+button {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.6rem;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.login-page {
+  min-height: 100vh;
+  background-image: url("../public/amicus-background.png");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.9rem;
+}
+
+.login-page form {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1.25rem;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 260px;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem; /* controls spacing between title + form */
+  transform: scale(0.6);
+}
+
+.login-box h1 {
+  color: white;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.login-page input,
+.login-page button {
+  font-size: 0.8rem;          /* ⬅️ forces text size */
+  padding: 0.4rem 0.55rem;    /* ⬅️ reduces height */
+  height: auto;               /* ⬅️ override browser defaults */
+}
+
+.login-page input {
+  border-radius: 4px;
+  border: none;
+  outline: none;
+}
+
+.home-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f7f7f7;
+}
+
+.home-content {
+  flex: 1;                 /* ⬅️ fills remaining space */
+  overflow-y: auto;        /* ⬅️ only this scrolls */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.top-bar {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+.top-bar h1 {
+  font-size: 0.7rem;
+  margin: 0;
+}
+
+.top-bar button {
+  font-size: 0.4rem;  /* emoji size */
+  padding: 0.5rem;
+}
+
+/* Ranking, Schedule, Network tabs */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.2rem 1rem;
+  background: white;
+}
+
+.tabs button {
+  padding: 0.2rem 0.8rem;
+  border-radius: 999px;
+  border: none;
+  background: #eee;
+  font-size: 0.4rem;
+}
+
+.tabs .active {
+  background: black;
+  color: white;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.5rem;
+}
+
+.card-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.stat-card h2 {
+  margin: 0.25rem 0;
+  font-size: 0.5rem; /* should be the biggest font in card */
+}
+
+.stat-card p {
+  margin: 0.25rem 0;
+  font-size: 0.3rem; /* should be the biggest font in card */
+}
+
+.chart-placeholder {
+  height: 140px;
+  background: linear-gradient(
+    to top right,
+    #e0e7ff,
+    #c7d2fe
+  );
+  border-radius: 8px;
+}
+
+.bottom-nav {
+  height: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.bottom-nav button {
+  font-size: 0.4rem;  /* emoji size */
+  padding: 0.5rem;
+}
