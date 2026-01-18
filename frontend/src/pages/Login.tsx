@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { login as apiLogin } from "../api/api";
+import { login as apiLogin } from "../api/api"; // <-- removed getMe import
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -14,10 +14,13 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
       const data = await apiLogin(username, password);
       setError("");
-      login(data.user_id);
+
+      // ✅ Use avatar from login response (no need for getMe())
+      login(data.user_id, data.avatar_url);
     } catch {
       setError("Invalid credentials");
     }
@@ -25,7 +28,7 @@ const Login = () => {
 
   useEffect(() => {
     if (userId) {
-      navigate("/call-requests", { replace: true });
+      navigate("/home", { replace: true });
     }
   }, [userId, navigate]);
 

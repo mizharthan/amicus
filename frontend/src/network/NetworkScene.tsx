@@ -5,7 +5,7 @@ import Edges from "./Edges";
 import { ALL_USERS } from "./data";
 import { layoutUsers } from "./layout";
 
-const NetworkScene: React.FC = () => {
+const NetworkScene: React.FC<{ zoom: number }> = ({ zoom }) => {
   // Convert object → array (order matters!)
   const users = Object.values(ALL_USERS);
 
@@ -20,6 +20,8 @@ const NetworkScene: React.FC = () => {
       style={{
         background: "#05070c",
         display: "block",
+        transform: `scale(${zoom})`,
+        transformOrigin: "top left",
       }}
     >
       {/* Background layer */}

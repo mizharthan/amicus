@@ -3,7 +3,8 @@ import type { ReactNode } from "react";
 
 type AuthContextType = {
   userId: number | null;
-  login: (id: number) => void;
+  avatarUrl: string | null;
+  login: (id: number, avatarUrl?: string) => void;
   logout: () => void;
 };
 
@@ -15,18 +16,30 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return stored ? Number(stored) : null;
   });
 
-  const login = (id: number) => {
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(() => {
+    const stored = localStorage.getItem("avatarUrl");
+    return stored ? stored : null;
+  });
+
+  const login = (id: number, avatar?: string) => {
     localStorage.setItem("userId", id.toString());
     setUserId(id);
+
+    if (avatar) {
+      localStorage.setItem("avatarUrl", avatar);
+      setAvatarUrl(avatar);
+    }
   };
 
   const logout = () => {
     localStorage.removeItem("userId");
+    localStorage.removeItem("avatarUrl");
     setUserId(null);
+    setAvatarUrl(null);
   };
 
   return (
-    <AuthContext.Provider value={{ userId, login, logout }}>
+    <AuthContext.Provider value={{ userId, avatarUrl, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
