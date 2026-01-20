@@ -6,13 +6,18 @@ import CallRequestsPage from "./pages/CallRequestsPage";
 import NetworkPage from "./pages/NetworkPage";
 import { PrivateRoute } from "./components/PrivateRoute";
 import HomePage from "./pages/Home";
+import CallRedirect from "./components/CallRedirect";
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          {/* prettier-ignore */}
+          <Route
+            path="/login"
+            element={<Login />}
+          />
           <Route
             path="/call-requests"
             element={
@@ -37,6 +42,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/call" element={<CallRedirect />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

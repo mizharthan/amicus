@@ -6,6 +6,8 @@ export type User = {
   avatar: string;
   connections: UserId[];
   status: UserStatus;
+  rank: number;
+  lastConnectionId: number;
 };
 
 export const ALL_USERS: Record<UserId, User> = {
@@ -15,6 +17,8 @@ export const ALL_USERS: Record<UserId, User> = {
     avatar: "/avatar1.jpg",
     connections: [],
     status: "online",
+    rank: 5,
+    lastConnectionId: 2,
   },
   2: {
     id: 2,
@@ -22,6 +26,8 @@ export const ALL_USERS: Record<UserId, User> = {
     avatar: "/avatar2.jpg",
     connections: [2, 3,],
     status: "offline",
+    rank: 4,
+    lastConnectionId: 3,
   },
   3: {
     id: 3,
@@ -29,6 +35,8 @@ export const ALL_USERS: Record<UserId, User> = {
     avatar: "/avatar3.jpg",
     connections: [4],
     status: "busy",
+    rank: 3,
+    lastConnectionId: 4,
   },
   4: {
     id: 4,
@@ -36,6 +44,8 @@ export const ALL_USERS: Record<UserId, User> = {
     avatar: "/avatar4.jpg",
     connections: [2],
     status: "online",
+    rank: 2,
+    lastConnectionId: 5,
   },
   5: {
     id: 5,
@@ -43,5 +53,7 @@ export const ALL_USERS: Record<UserId, User> = {
     avatar: "/avatar5.jpg",
     connections: [1],
     status: "busy",
+    rank: 1,
+    lastConnectionId: 1,
   },
 };

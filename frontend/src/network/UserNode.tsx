@@ -1,11 +1,13 @@
 import React from "react";
 
 type UserNodeProps = {
+  userId: string;
   x: number;
   y: number;
   avatar?: string;
   label?: string;
   status?: "online" | "offline" | "busy";
+  onClick?: () => void;
 };
 
 const UserNode: React.FC<UserNodeProps> = ({
@@ -15,6 +17,7 @@ const UserNode: React.FC<UserNodeProps> = ({
   label,
   userId,
   status = "offline",
+  onClick,
 }) => {
   const radius = 28; // all nodes same size
   const ringWidth = 4; // width of the status ring
@@ -29,7 +32,11 @@ const UserNode: React.FC<UserNodeProps> = ({
   const ringColor = statusColors[status] || "#666";
 
   return (
-    <g transform={`translate(${x}, ${y})`}>
+    <g
+      transform={`translate(${x}, ${y})`}
+      onClick={onClick}
+      style={{ cursor: "pointer" }}
+    >
       {/* Outer status ring */}
       <circle
         r={radius + ringWidth}

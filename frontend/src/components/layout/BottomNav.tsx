@@ -9,7 +9,7 @@ const BottomNav = () => {
       <button>📊</button>
       <button onClick={() => navigate("/network")}>🧭</button>
       <button>🔔</button>
-      <button>👤</button>
+      <button>⚙️</button>
     </div>
   );
 };

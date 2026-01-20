@@ -223,13 +223,14 @@ button {
 }
 
 .bottom-nav button {
-  font-size: 0.4rem;  /* emoji size */
+  font-size: 0.4rem;  /* emoji size for Home page buttons*/
   padding: 0.5rem;
 }
 
 .avatar {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
 .network-page {
@@ -251,7 +252,7 @@ button {
   transform-origin: top left;
 }
 
-.bottom-nav-btn {
+.bottom-nav-btn { /* Network page buttons */
   position: fixed;
   bottom: 20px;
   left: 50%;
@@ -259,4 +260,6 @@ button {
   width: 120px;
   height: 60px;
   z-index: 9999;
+
+  opacity: 0.5;
 }
