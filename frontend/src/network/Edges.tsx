@@ -11,19 +11,26 @@ type EdgesProps = {
 };
 
 const Edges: React.FC<EdgesProps> = ({ users }) => {
-  // Build edges only between visible users
   const edges: Edge[] = [];
+  const seen = new Set<string>();
 
   const userMap = new Map(users.map((u) => [u.id, u]));
 
   users.forEach((user) => {
     user.connections.forEach((connectionId) => {
       const target = userMap.get(connectionId);
+      if (!target) return;
 
-      // Prevent duplicates (A→B and B→A)
-      if (target && user.id < target.id) {
-        edges.push({ from: user, to: target });
-      }
+      // Dedup key (order-independent)
+      const key =
+        user.id < target.id
+          ? `${user.id}-${target.id}`
+          : `${target.id}-${user.id}`;
+
+      if (seen.has(key)) return;
+
+      seen.add(key);
+      edges.push({ from: user, to: target });
     });
   });
 

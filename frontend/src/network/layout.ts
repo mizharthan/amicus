@@ -60,15 +60,19 @@ export function layoutUsers(users: User[]): PositionedUser[] {
   // 4. Final order (matches slot indices)
   const finalUsers = [
     lowRankUser,   // slot 0
-    slot1User,     // slot 1
-    slot2User,     // slot 2
+    slot1User ?? null,     // slot 1
+    slot2User ?? null,     // slot 2
     highRankUser,  // slot 3
-  ].filter(Boolean);
+  ];
 
   // 5. Assign slots
-  return finalUsers.map((user, i) => ({
-    ...user,
-    x: slots[i].x,
-    y: slots[i].y,
-  }));
+  return finalUsers.flatMap((user, i) => {
+    if (!user) return [];
+
+    return {
+      ...user,
+      x: slots[i].x,
+      y: slots[i].y,
+    };
+  });
 }

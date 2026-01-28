@@ -1,4 +1,5 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
+import UserProfileModal from "./UserProfileModal";
 import Stars from "./Stars";
 import UserNode from "./UserNode";
 import Edges from "./Edges";
@@ -16,41 +17,54 @@ const NetworkScene: React.FC<{ zoom: number }> = ({ zoom }) => {
   }, []);
 
   const navigate = useNavigate();
+  const [selectedUser, setSelectedUser] = useState<
+    null | (typeof positionedUsers)[number]
+  >(null);
 
   return (
-    <svg
-      width="100vw"
-      height="100vh"
-      viewBox="-500 -800 1000 1600"
-      style={{
-        background: "#05070c",
-        display: "block",
-        transform: `scale(${zoom})`,
-        transformOrigin: "top left",
-      }}
-    >
-      {/* Background layer */}
-      <Stars />
+    <>
+      <svg
+        width="100vw"
+        height="100vh"
+        viewBox="-500 -800 1000 1600"
+        style={{
+          background: "#05070c",
+          display: "block",
+          transform: `scale(${zoom})`,
+          transformOrigin: "top left",
+        }}
+      >
+        {/* Background layer */}
+        <Stars />
 
-      {/* Connection lines */}
-      <Edges users={positionedUsers} />
+        {/* Connection lines */}
+        <Edges users={positionedUsers} />
 
-      {/* User nodes */}
-      {positionedUsers.map((user) => (
-        <UserNode
-          key={user.id}
-          userId={String(user.id)}
-          x={user.x}
-          y={user.y}
-          avatar={user.avatar}
-          label={user.name}
-          status={user.status}
-          onClick={() => {
-            navigate("/call");
-          }}
+        {/* User nodes */}
+        {positionedUsers.map((user) => (
+          <UserNode
+            key={user.id}
+            userId={String(user.id)}
+            x={user.x}
+            y={user.y}
+            avatar={user.avatar}
+            label={user.name}
+            status={user.status}
+            onClick={() => {
+              // navigate("/call");
+              setSelectedUser(user);
+            }}
+          />
+        ))}
+      </svg>
+
+      {selectedUser && (
+        <UserProfileModal
+          user={selectedUser}
+          onClose={() => setSelectedUser(null)}
         />
-      ))}
-    </svg>
+      )}
+    </>
   );
 };
 

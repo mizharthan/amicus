@@ -127,8 +127,26 @@ button {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f7f7f7;
+  background:
+    linear-gradient(
+      180deg,
+      #ecd9aa 0%,
+      #e6d2a3 50%,
+      #dcc58f 100%
+    );
 }
+
+/* .home-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("../public/textures/parchment-noise.png");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 1;
+} */
 
 .home-content {
   flex: 1;                 /* ⬅️ fills remaining space */
